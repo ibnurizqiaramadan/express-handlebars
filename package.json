@@ -1,0 +1,26 @@
+{
+  "name": "example-app",
+  "version": "1.0.0",
+  "description": "Example app",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node src/app.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --watch .env --ext js --exec node --env-file .env src/app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-form-data": "^2.0.23",
+    "express-handlebars": "^8.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
