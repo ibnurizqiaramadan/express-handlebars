@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import morganMiddleware from './middleware/appMiddleware.js';
 import sessionMiddleware from './middleware/sessionMiddleware.js';
-import cors from 'cors';
+import corsMiddleware from './middleware/corsMiddleware.js';
 dotenv.config();
 
 const __dirname = path.resolve();
@@ -30,13 +30,7 @@ const options = {
   autoClean: true,
 };
 
-const corsOptions = {
-  origin: '*',
-};
-
-app.use(cors(corsOptions));
-
-app.options('*', cors(corsOptions));
+app.use(corsMiddleware);
 app.use(formData.parse(options));
 app.use(formData.format());
 app.use(formData.stream());

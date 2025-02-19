@@ -1,4 +1,5 @@
 import express from 'express';
+import SessionClass from '../../systems/session.js';
 
 const authApi = {
     /**
@@ -7,6 +8,7 @@ const authApi = {
      * @param {express.Response} res 
      */
     action: (req, res) => {
+        const Session = new SessionClass(req, res);
         const username = req.body.username;
         const password = req.body.password;
         console.log(req.body);
@@ -21,8 +23,11 @@ const authApi = {
             const session = {
                 username: username,                
             };
-            res.cookie('session', session);
-            res.json({ message: 'Auth Action' });
+            Session.setSession(session);
+            res.json({ 
+                statusCode: 200,
+                message: 'Login Success',
+            });
         } else {
             res.status(401).json({ message: 'Invalid username or password' });
         }
@@ -41,8 +46,9 @@ const authApi = {
      * @param {express.Response} res 
      */
     logout: (req, res) => {
-        res.clearCookie('session');
-        res.json({ message: 'Auth Logout' });
+        const Session = new SessionClass(req, res);
+        Session.destroySession();
+        res.json({ message: 'Logout Success' });
     }
 };
 
