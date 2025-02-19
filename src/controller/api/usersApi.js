@@ -3,8 +3,8 @@ import Users from '../../models/Users.js';
 const usersApi = {
     /**
      * 
-     * @param {*} req 
-     * @param {*} res 
+     * @param {express.Request} req 
+     * @param {express.Response} res 
      */
     index: (req, res) => {
         Users.findAll().then(users => {
@@ -13,16 +13,16 @@ const usersApi = {
     },
     /**
      * 
-     * @param {*} req 
-     * @param {*} res 
+     * @param {express.Request} req 
+     * @param {express.Response} res 
      */
     create: (req, res) => {
         res.json({ message: 'Users API' });
     },
     /**
      * 
-     * @param {*} req 
-     * @param {*} res 
+     * @param {express.Request} req 
+     * @param {express.Response} res 
      */
 }
 export default usersApi;
