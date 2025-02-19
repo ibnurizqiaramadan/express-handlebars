@@ -19,18 +19,21 @@ const __dirname = path.resolve();
 const app = express();
 
 app.use(sessionMiddleware);
-app.engine('hbs', engine({
-    layoutsDir: path.join(__dirname, 'src/views/layouts'),
-    partialsDir: path.join(__dirname, 'src/views/layouts/partials'),
-    extname: '.hbs'
-}));
+app.engine(
+    'hbs',
+    engine({
+        layoutsDir: path.join(__dirname, 'src/views/layouts'),
+        partialsDir: path.join(__dirname, 'src/views/layouts/partials'),
+        extname: '.hbs',
+    })
+);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src/views'));
 app.use(express.static('public'));
 app.use(morganMiddleware);
 const options = {
-  uploadDir: os.tmpdir(),
-  autoClean: true,
+    uploadDir: os.tmpdir(),
+    autoClean: true,
 };
 
 app.use(corsMiddleware);
@@ -61,20 +64,25 @@ app.use((req, res, next) => {
     next();
 });
 
-
-
 app.use(router);
 app.use('/api', apiRouter);
 
 const port = process.env.APP_PORT || 3000;
 const host = process.env.APP_HOST || '0.0.0.0';
 
-app.listen({
-    host: host,
-    port: port
-}, () => {
-    console.info(`${process.env.APP_NAME} is running in ${process.env.NODE_ENV} mode`);
-    console.info(`Web Router Loaded ${router.stack.length} routes`);
-    console.info(`API Router Loaded ${apiRouter.stack.length} routes`);
-    console.info(`Server is running on \n\thttp://${host}:${port}\n\thttp://localhost:${port}\nCtrl+C to stop`);
-});
+app.listen(
+    {
+        host: host,
+        port: port,
+    },
+    () => {
+        console.info(
+            `${process.env.APP_NAME} is running in ${process.env.NODE_ENV} mode`
+        );
+        console.info(`Web Router Loaded ${router.stack.length} routes`);
+        console.info(`API Router Loaded ${apiRouter.stack.length} routes`);
+        console.info(
+            `Server is running on \n\thttp://${host}:${port}\n\thttp://localhost:${port}\nCtrl+C to stop`
+        );
+    }
+);

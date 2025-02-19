@@ -12,5 +12,3 @@ api.get('/users', usersApi.index);
 api.post('/users', usersApi.create);
 
 export default api;
-
-

@@ -4,7 +4,7 @@ import Session from '../../systems/session.js';
 const authController = {
     /**
      * Renders the login page.
-     * 
+     *
      * @param {express.Request} req - The request object.
      * @param {import('../../types').CustomResponse} res - The response object.
      */
@@ -15,13 +15,13 @@ const authController = {
     },
     /**
      * Renders the registration page.
-     * 
+     *
      * @param {express.Request} req - The request object.
      * @param {import('../../types').CustomResponse} res - The response object.
      */
     register: (req, res) => {
         res.render('pages/auth/register', { layout: false, session });
-    }
+    },
 };
 
 export default authController;
