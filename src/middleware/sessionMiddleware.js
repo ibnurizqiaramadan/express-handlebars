@@ -4,8 +4,8 @@ const sessionMiddleware = (req, res, next) => {
     // list yang perlu di cek session
     const session = new Session(req, res, [
         '/auth/destroy',
-        '/dashboard',
-        '/dashboard/*',
+        '/admin',
+        '/admin/*',
     ]);
     const sessionData = session.getSession();
     const isIncludePath = session.isIncludePath();
