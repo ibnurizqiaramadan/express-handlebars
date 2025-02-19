@@ -1,14 +1,13 @@
 import express from 'express';
-
 const contactController = {
     /**
      * Renders the contact page.
      * 
      * @param {express.Request} req - The request object.
-     * @param {express.Response} res - The response object.
+     * @param {import('../../types').CustomResponse} res - The response object.
      */
     index: (req, res) => {
-        res.render('pages/contact', { layout: 'main' });
+        res.renderTemplate('pages/contact', { title: 'Contact Page' });
     }
 };
 

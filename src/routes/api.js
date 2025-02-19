@@ -5,7 +5,7 @@ const api = express.Router();
 
 api.post('/auth/action', authApi.action);
 api.post('/auth/register', authApi.register);
-api.post('/auth/logout', authApi.logout);
+api.get('/auth/destroy', authApi.logout);
 
 export default api;
 

@@ -48,7 +48,7 @@ const authApi = {
     logout: (req, res) => {
         const Session = new SessionClass(req, res);
         Session.destroySession();
-        res.json({ message: 'Logout Success' });
+        res.redirect('/auth');
     }
 };
 

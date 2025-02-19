@@ -40,7 +40,6 @@ class Session {
     getSession() {
         try {
             const cookie = this.req.headers.cookie;
-            console.log('Cookies received:', cookie);
             const sessionToken = cookie.split('; ').find(row => row.startsWith(sessionCookieName))?.split('=')[1];
             if (!sessionToken) {
                 console.error('No session token found');
